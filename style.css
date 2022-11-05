@@ -1,0 +1,60 @@
+body
+{
+    background-color: rgb(235, 249, 244);
+}
+body.note
+{
+    background-color: rgb(247, 246, 219);
+}
+body.login{
+    background-color: rgb(204, 244, 244);
+}
+input
+{
+    color: rgb(1, 6, 10);
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: rgb(229, 173, 248);
+    font-weight: bolder;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+label.Register
+{
+    font-size: 25px;
+    font-style: oblique;
+}
+
+input.note
+{
+    color: lightslategrey;
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: rgb(185, 238, 226);
+    font-weight: bolder;
+    text-align: center;
+}
+label.note
+{
+    font-size: 25px;
+    font-style: oblique;
+}
+
+input.login
+{
+    color: lightslategrey;
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: rgb(249, 237, 246);
+    font-weight: bolder;
+    text-align: center;
+}
+label.login
+{
+    font-size: 25px;
+    font-style: oblique;
+}
