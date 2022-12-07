@@ -1,0 +1,55 @@
+body
+{
+    background-color: rgb(123, 117, 123);
+}
+input
+{
+    color: rgb(115, 140, 160);
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: rgb(0, 0, 0);
+    font-weight: bolder;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+label.Register
+{
+    font-size: 25px;
+    font-style: oblique;
+}
+
+input.note
+{
+    color: rgb(118, 142, 164);
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: rgb(185, 238, 226);
+    font-weight: bolder;
+    text-align: center;
+}
+label.note
+{
+    font-size: 25px;
+    font-style: oblique;
+}
+
+input.login
+{
+    color: rgb(79, 83, 88);
+    font-family: monospace;
+    font-size: 15px;
+    font-style: italic;
+    background-color: powderblue;
+    font-weight: bolder;
+    text-align: center;
+}
+label.login
+{
+    font-size: 40px;
+    font-style: normal;
+    height: 30px;
+    width: 500px;
+}
