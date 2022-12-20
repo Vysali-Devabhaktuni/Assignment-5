@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Register Page</title>
-    <link rel="stylesheet" href="/style.css">
+    <link href="/public/styles/style.css" rel="stylesheet">
   </head>
   <body>
     <form action="/action_page.php" id="formreg">
@@ -20,12 +20,15 @@
       <label for="password" class="Register">Password:</label>&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="password" id="password" name="password" placeholder="Enter your password">
       <br>
+    
       <input type="submit" value="Submit">
     </form> 
-    <a href="./Login Page.html">Login Page</a>
-    <a href="./Note.html">Notes Page</a>
-    <script src="main.js">
-    </script>
+    <a href="/public/Login.html">Login Page</a>
+    <a href="/public/Note.html">Notes Page</a>
+    
+    <script type="module" src="/public/main.js"></script>
+    <script type="module" src="/public/fetch.js"></script>
+    
+  
   </body>
 </html>
-    

@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
   </head>
   <body class="Login">
-    <button id="btn-users"></button>
+  
     <form id="Login">
       <label for="uname" class="Login">Username or Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" id="uname" name="uname" placeholder="Enter your Username/Email" class="Login">
@@ -18,9 +18,10 @@
       <input type="submit" value="Submit">
     </form>
     <br>
-    <a href="./Register Page.html">Signup Page</a>
-    <a href="./Note.html">Notes Page</a>
-    <script src="main.js">
+    <a href="/public/Register.html">Signup Page</a>
+    <a href="/public/Note.html">Notes Page</a>
+    <script type="module" src="/public/main.js"></script>
+    <script type="module" src="/public/fetch.js"></script>
     </script>
   </body>
 </html>

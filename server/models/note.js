@@ -43,7 +43,7 @@ async function getNote(note) {
   
     sql = `
       SELECT * FROM notes
-       WHERE noteID = ${note.noteID}
+       WHERE uname = ${note.uname}
     `
   
   return await con.query(sql);  

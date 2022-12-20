@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Note</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
   </head>
   <body class="note">
-    <form>
+    <form id="note">
       <label for="note" class="note">Note:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="text" id="note" name="note" placeholder="Enter your Notes" class="note">
+      <input type="text" id="notetext" name="note" placeholder="Enter your Notes" class="note">
       <br>
       <input type="submit" value="Submit">
     </form> 
-    <img src="./public/images/BTS.png" alt="BTS" width="600" height="400">
+    <img src="/public/images/BTS.png" alt="BTS" width="600" height="400">
     <br>
-    <a href="./Login Page.html">Login Page</a>
-    <a href="./Register Page.html">Signup Page</a>
-    <script src="main.js">
+    <a href="/public/Login.html">Login Page</a>
+    <a href="/public/Register.html">Signup Page</a>
+    <script type="module" src="/public/main.js"></script>
+    <script type="module" src="/public/fetch.js"></script>
     </script>
   </body>
 </html>

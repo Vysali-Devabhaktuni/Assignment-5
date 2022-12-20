@@ -1,4 +1,4 @@
-const users = [
+/*const users = [
   {
     userId: 12345,
     uname: "cathy123",
@@ -14,7 +14,7 @@ const users = [
     uname: "bobbyjones",
     password: "hi"
   }
-];
+];*/ 
 
 
 const con = require("./db_connect");
@@ -66,7 +66,7 @@ async function login(user) { // {userName: "sda", password: "gsdhjsga"}
 async function editUser(user) {
   let sql = `UPDATE users 
     SET uname= "${user.uname}"
-    WHERE userID = ${user.userID}
+    WHERE uname = ${user.uname}
   `;
 
   await con.query(sql);
@@ -77,7 +77,7 @@ async function editUser(user) {
 // Delete User function
 async function deleteUser(user) {
   let sql = `DELETE FROM users
-    WHERE userID = ${user.userID}
+    WHERE uname = ${user.uname}
   `
   await con.query(sql);
 }
@@ -86,17 +86,12 @@ async function deleteUser(user) {
 async function getUser(user) {
   let sql;
 
-  if(user.userID) {
+  if(user.uname) {
     sql = `
       SELECT * FROM users
-       WHERE userID = ${user.userID}
+       WHERE uname = ${user.uname}
     `
-  } else {
-    sql = `
-    SELECT * FROM users 
-      WHERE uname = "${user.uname}"
-  `;
-  }
+  } 
   return await con.query(sql);  
 }
 
