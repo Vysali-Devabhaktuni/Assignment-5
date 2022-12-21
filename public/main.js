@@ -41,13 +41,13 @@ class notemaking
   
 }
 class notes{
-    constructor(notes1)
+    constructor(note2)
     {
-        this.notetxt=notes1;
+        this.notetxt=note2;
     }
-    setnotetxt(notes1)
+    setnotetxt(note2)
     {
-        this.notetxt=notes1;
+        this.notetxt=note2;
     }
     getnotetxt()
     
@@ -122,7 +122,7 @@ function nfun(n)
     })
    
     console.log(`${notetext}`);
-    // ntf.reset();
+     ntf.reset();
 }
 
 
@@ -134,10 +134,11 @@ function getallnotes(){
     let notetext=document.getElementById("notetxt");
     fetchData("/notes/getNote",user,"POST")
     .then((data) => {
-    console.log(data);
+    //console.log(data);
+    /*
  for(let i=0;i<data.length;i++){
-    notetext.value='\n'+data[i].notes
+    notetext.value='\n'+ data[i].notes
  }
-
+*/
     })
 }

@@ -36,9 +36,12 @@ async function getNote(note) {
   
     sql = `
       SELECT * FROM notes
-       WHERE userID = "${note.userID}"`;
+       WHERE userID = "${note.userID}"
+    `
+  
   return await con.query(sql);  
 }
+
 async function deleteNote(note) {
     let sql = `DELETE FROM notes
       WHERE noteID = "${note.noteID}"
