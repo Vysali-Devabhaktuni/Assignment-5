@@ -1,21 +1,12 @@
-/*const notes = [
-    {
-      note: "text",
-    },
-    {
-      note: "text",
-    },
-  ];*/
-  
 const con = require("./db_connect");
-
 
 async function createTable() {
 let sql=`CREATE TABLE IF NOT EXISTS notes (
   noteID INT NOT NULL AUTO_INCREMENT,
-  uname VARCHAR(255) NOT NULL,
-  notetext VARCHAR(255) NOT NULL,
-  CONSTRAINT notePK PRIMARY KEY(noteID)
+  notetxt VARCHAR(255) NOT NULL,
+  userID INT NOT NULL,
+  CONSTRAINT note_pk PRIMARY KEY(noteID),
+  CONSTRAINT note_fk FOREIGN KEY(userID) REFERENCES users(userID)
 ); `
 await con.query(sql);
 }
@@ -23,18 +14,20 @@ createTable();
 
 async function create(note) {
 
-const sql = `INSERT INTO notes (uname, notetext)
-  VALUES ("${note.uname}","${note.notetext}");`
-await con.query(sql);
+const sql = `INSERT INTO notes (userID,notetxt)
+  VALUES ("${note.userID}","${note.notetxt}");
+`
+
+console.log(await con.query(sql));
 return {success:"Note Added"};
 }
 
 
 async function getAllNotes() {
  const sql = "SELECT * FROM notes;";
- let notes = await con.query(sql);
- console.log(notes)
- return notes;
+ let note = await con.query(sql);
+ console.log(note)
+ return note;
 }
 
 
@@ -43,26 +36,24 @@ async function getNote(note) {
   
     sql = `
       SELECT * FROM notes
-       WHERE uname = ${note.uname}
-    `
-  
+       WHERE userID = "${note.userID}"`;
   return await con.query(sql);  
 }
 async function deleteNote(note) {
     let sql = `DELETE FROM notes
-      WHERE noteID = ${note.noteID}
+      WHERE noteID = "${note.noteID}"
     `
     await con.query(sql);
     }
 async function editNote(note) {
   let sql = `UPDATE notes 
-    SET notetext = "${note.notetext}"
+    SET notetxt = "${note.notetxt}"
     WHERE noteID = ${note.noteID}
   `;
   
   await con.query(sql);
   let updatedNote = await getNote(note);
-  return updatedNote[0];
+  return updatedNote;
   }
 
 

@@ -2,7 +2,7 @@ const express = require('express');
 const   User = require('../models/note');
 const router = express.Router();
 router
-.get('/getNote', async (req, res) => {
+.post('/getNote', async (req, res) => {
     try {
       let note = await User.getNote(req.body);
       res.send(note)

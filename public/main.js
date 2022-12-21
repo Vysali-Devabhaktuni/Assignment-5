@@ -2,11 +2,11 @@ import {fetchData, setCurrentUser, getCurrentUser} from './fetch.js'
 
 class notemaking 
 {
-    constructor(FN,LN,UN,Pwd1)
+    constructor(FirstN,LastN,UserN,Pwd1)
     {
-    this.fname=FN;
-    this.lname=LN;
-    this.uname=UN;
+    this.fname=FirstN;
+    this.lname=LastN;
+    this.uname=UserN;
     this.password=Pwd1;
     
 
@@ -24,62 +24,48 @@ class notemaking
     {
         return this.password;
     }
-     // getUser()
-     // {
-      //   return this.User;
-     //  }
-    // getLoginpwd()
-    // {
-      //   return this.Loginpwd;
-   //  } 
-    setfname(FN){
-        this.fname=FN;
+   
+    setfname(FirstN){
+        this.fname=FirstN;
     }
-    setlname(LN){
-        this.lname=LN;
+    setlname(LastN){
+        this.lname=LastN;
     }      
-    setuname(UN){
-        this.uname=UN;
+    setuname(UserN){
+        this.uname=UserN;
     }
     setpassword(Pwd1)
     {
         this.password=Pwd1;
     }
-    //setUser(user)
-   //  {
-     //    this.User=user;
-    // }
-   //  setLoginpwd(password)
-   //  {
-     //    this.Loginpwd=password;
-   // }
+  
 }
 class notes{
     constructor(notes1)
     {
-        this.notetext=notes1;
+        this.notetxt=notes1;
     }
-    setnotetext(notes1)
+    setnotetxt(notes1)
     {
-        this.notetext=notes1;
+        this.notetxt=notes1;
     }
-    getnotetext()
+    getnotetxt()
     
     {
-        return this.notetext;
+        return this.notetxt;
     }
 
 }
-const registration=document.getElementById("formreg");
+const registration=document.getElementById("Freg");
 if(registration) registration.addEventListener('submit',register)
 function register(e){
     e.preventDefault();
-    let firstname1=document.getElementById('fname').value;
-    let lastname1=document.getElementById('lname').value;
-    let username1=document.getElementById('uname').value;
-    let passwrd=document.getElementById('password').value;
+    let fn=document.getElementById('fname').value;
+    let ln=document.getElementById('lname').value;
+    let un=document.getElementById('uname').value;
+    let pd=document.getElementById('password').value;
 
-    let regi= new notemaking(firstname1,lastname1,username1,passwrd);
+    let regi= new notemaking(fn,ln,un,pd);
 
     fetchData("/users/register", regi, "POST")
     .then((data) => {
@@ -91,22 +77,16 @@ function register(e){
        let p = document.querySelector('.error');
        p.innerHTML = err.message;
     }) 
-    /*
-    console.log(regi.FN)
-    console.log(regi.LN)
-    console.log(regi.UN)
-    console.log(regi.Pwd)
-    registration.reset();
-}
-*/
+  }
+
 const loginform=document.getElementById("Login");
 if(loginform) loginform.addEventListener('submit', loginuser)
 function loginuser(l){
-  console.log(l);   
+ console.log(l);   
     l.preventDefault();
-    let user1=document.getElementById('uname').value;
-    let password1=document.getElementById('password').value;
-    let logi= new notemaking(user1,password1);
+    let us=document.getElementById('uname').value;
+    let pw=document.getElementById('password').value;
+    let logi= new notemaking(null,null,us,pw);
     fetchData("/users/login", logi, "POST")
   .then((data) => {
     setCurrentUser(data);
@@ -117,28 +97,23 @@ function loginuser(l){
     alert("not success");
   }) 
 
-  let luser=new notemaking(user,password1);
-console.log(`${user}`);
- console.log(`${password1}`);
+
   loginform.reset();
 
 }
  
-    
-
     let user = getCurrentUser()
 
-const noteform=document.getElementById("note");
-if(noteform) noteform.addEventListener('submit',notem)
-function notem(f)
+const ntf=document.getElementById("note");
+if(ntf) ntf.addEventListener('submit',nfun)
+function nfun(n)
 {
-    f.preventDefault();
-    let notetext1=document.getElementById("notetext").value;
-    let note1= new notes(notetext1);
-    note1.uname= user.uname;
+    n.preventDefault();
+    let notetext=document.getElementById("notetxt").value;
+    let note1= new notes(notetext);
+    note1.userID= user.userID;
     fetchData("/notes/create",note1, "POST")
     .then((data) => {
-
       window.location.href = "Note.html";
     })
     .catch((err) => {
@@ -146,24 +121,23 @@ function notem(f)
      
     })
    
-   // console.log(`${notetext}`);
-    noteform.reset();
+    console.log(`${notetext}`);
+    // ntf.reset();
 }
 
 
 
 
-if(user&&noteform) getallnotes();
+if(user&&ntf) getallnotes();
 
 function getallnotes(){
-    let notetext=document.getElementById("notetext");
+    let notetext=document.getElementById("notetxt");
     fetchData("/notes/getNote",user,"POST")
     .then((data) => {
- console.log(data);
+    console.log(data);
  for(let i=0;i<data.length;i++){
     notetext.value='\n'+data[i].notes
  }
 
     })
-}
 }
